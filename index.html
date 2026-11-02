@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#183c32">
+  <title>USFans Spreadsheet — Category Finds & Comparison Guide</title>
+  <meta name="description" content="Explore a practical USFans spreadsheet guide for shoes, clothing and accessories. Browse CAFANS categories and learn to compare sizing, photos and total costs.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="USFans Spreadsheet — Find Your Next Category">
+  <meta property="og:description" content="A category-first fashion discovery guide with practical checks for sizing, product photos and purchase costs.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="USFans Spreadsheet — Category Finds & Comparison Guide">
+  <meta name="twitter:description" content="Browse fashion categories through CAFANS and build a clearer product shortlist.">
+  <!-- index.html: Set a self-referencing canonical and og:url to this page's final public URL after deployment. -->
+  <style>
+    :root{--paper:#f5f3eb;--ink:#19372f;--muted:#59665d;--line:#d8ddcf;--green:#183c32;--lime:#d6ec99;--white:#fffef9;--radius:18px}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,summary:focus-visible{outline:3px solid #658e32;outline-offset:5px}
+    a:hover{text-decoration:underline;text-underline-offset:4px}
+    img{display:block;width:100%;height:auto}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3{line-height:1.12}
+    h1{font-size:clamp(3rem,7vw,6.6rem);letter-spacing:-.065em;margin-bottom:24px;max-width:850px}
+    h2{font-size:clamp(1.9rem,3.7vw,3rem);letter-spacing:-.045em;margin-bottom:18px}
+    h3{font-size:1.18rem;letter-spacing:-.02em}
+    .wrap{width:min(1240px,calc(100% - 48px));margin-inline:auto}
+    .eyebrow{text-transform:uppercase;font-size:.73rem;letter-spacing:.17em;font-weight:750}
+    .muted{color:var(--muted)}
+    .top{border-bottom:1px solid var(--line)}
+    .top-inner{min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .wordmark{font-weight:850;font-size:1.4rem;letter-spacing:-.05em}
+    .wordmark span{font-weight:450}
+    .top-right{display:flex;align-items:center;gap:24px;font-size:.86rem}
+    .pill{border:1px solid var(--line);border-radius:999px;padding:8px 15px}
+    .category-section{padding:24px 0 32px;border-bottom:1px solid var(--line)}
+    .category-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:14px}
+    .category-heading p{margin:0;font-size:.78rem}
+    .categories{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+    .categories a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:49px;padding:10px 13px;border:1px solid var(--line);border-radius:9px;background:var(--white);font-size:.84rem;font-weight:650}
+    .categories a:hover{background:var(--lime);text-decoration:none;border-color:#afc875}
+    .categories a span{color:#71816a}
+    .hero{padding:66px 0 56px;display:grid;grid-template-columns:1.65fr .7fr;gap:60px;align-items:end}
+    .hero .eyebrow{margin-bottom:21px}
+    .hero p.intro{font-size:1.08rem;max-width:640px;color:var(--muted);margin-bottom:27px}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:28px;border-radius:999px;background:var(--green);color:white;padding:14px 24px;font-weight:650;font-size:.9rem}
+    .button:hover{background:#285747;text-decoration:none}
+    .hero-aside{border-top:3px solid var(--green);padding-top:21px}
+    .hero-aside p{font-size:.93rem;color:var(--muted)}
+    .hero-aside .number{font-size:4.5rem;font-weight:350;letter-spacing:-.07em;line-height:1}
+    .hero-aside .eyebrow{margin:15px 0 12px}
+    .answer{display:grid;grid-template-columns:.65fr 1.35fr;gap:40px;background:var(--green);color:var(--white);padding:34px;border-radius:var(--radius);margin-bottom:60px}
+    .answer h2{font-size:1.65rem;margin:0}
+    .answer p{margin:0;color:#e1e8d8}
+    .section{padding-bottom:64px}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:26px}
+    .section-head h2{margin-bottom:0}
+    .section-head p{max-width:360px;font-size:.9rem;margin-bottom:0}
+    .gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .visual-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .picture{position:relative;background:#ecece6;aspect-ratio:1/1.12;overflow:hidden}
+    .picture img{height:100%;object-fit:contain}
+    .picture.shoe img{object-fit:cover}
+    .picture .tag{position:absolute;top:12px;left:12px;background:var(--white);border-radius:999px;padding:5px 10px;font-size:.66rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+    .visual-copy{padding:20px}
+    .visual-copy h3{margin-bottom:10px}
+    .visual-copy p{font-size:.84rem;color:var(--muted);margin-bottom:18px}
+    .text-link{font-size:.83rem;font-weight:750;display:inline-block}
+    .caption{font-size:.75rem;color:var(--muted);margin:17px 0 0;max-width:890px}
+    .workflow{display:grid;grid-template-columns:.8fr 1.2fr;gap:65px;padding-top:46px;border-top:1px solid var(--line)}
+    .workflow-intro p{color:var(--muted)}
+    .steps{list-style:none;padding:0;margin:0;counter-reset:step}
+    .steps li{counter-increment:step;position:relative;padding:0 0 25px 55px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+    .steps li::before{content:"0" counter(step);position:absolute;left:0;top:0;font-size:.85rem;font-weight:750;color:#6d8458}
+    .steps li:last-child{margin-bottom:0}
+    .steps h3{margin-bottom:9px}
+    .steps p{margin:0;color:var(--muted);font-size:.92rem}
+    .table-box{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--white)}
+    table{width:100%;border-collapse:collapse;text-align:left;font-size:.9rem}
+    caption{text-align:left;padding:23px;font-weight:750;font-size:1rem}
+    th,td{padding:16px 23px;border-top:1px solid var(--line);vertical-align:top}
+    thead{background:#e9eedf}
+    th{font-size:.77rem;letter-spacing:.04em}
+    td:first-child{font-weight:650;min-width:140px}
+    .note{padding:20px 23px;background:#eaf0de;border-left:3px solid #7d965a;font-size:.9rem;margin-top:20px}
+    .faq-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:65px;border-top:1px solid var(--line);padding-top:44px}
+    details{border-bottom:1px solid var(--line);padding:0 0 19px;margin-bottom:20px}
+    summary{cursor:pointer;font-weight:700;font-size:1rem;padding-right:10px}
+    details p{margin:13px 0 0;color:var(--muted);font-size:.93rem}
+    .terms{border-top:1px solid var(--line);padding-top:40px}
+    .terms h2{font-size:1.65rem}
+    .term-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+    .term-grid h3{font-size:.81rem;text-transform:uppercase;letter-spacing:.09em}
+    .term-grid ul{list-style:none;margin:0;padding:0;color:var(--muted);font-size:.84rem}
+    .term-grid li{padding:4px 0}
+    .final-cta{background:var(--lime);border-radius:var(--radius);padding:35px;display:flex;justify-content:space-between;align-items:center;gap:30px;margin-bottom:55px}
+    .final-cta h2{font-size:2rem;margin-bottom:10px}
+    .final-cta p{margin:0;max-width:610px}
+    .final-cta .button{white-space:nowrap}
+    footer{border-top:1px solid var(--line);padding:27px 0 35px;font-size:.78rem;color:var(--muted)}
+    .footer-inner{display:flex;justify-content:space-between;gap:32px}
+    .footer-inner p{max-width:800px;margin:0}
+    @media(min-width:900px){.section{content-visibility:auto;contain-intrinsic-size:auto 600px}}
+    @media(max-width:950px){
+      .categories{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .hero{gap:30px;grid-template-columns:1.5fr .7fr}
+      .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .workflow,.faq-layout{gap:32px}
+    }
+    @media(max-width:620px){
+      .wrap{width:calc(100% - 32px)}
+      .top-inner{min-height:72px}
+      .top-right .quiet{display:none}
+      .top-right{gap:0}
+      .categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+      .categories a{font-size:.76rem;padding:9px;min-height:48px}
+      .category-heading{align-items:start}
+      .category-heading p:last-child{max-width:140px;text-align:right}
+      .hero{grid-template-columns:1fr;padding:39px 0;gap:32px}
+      h1{font-size:3.6rem}
+      .hero-aside{display:grid;grid-template-columns:60px 1fr;gap:4px 18px}
+      .hero-aside .number{font-size:3.6rem;grid-row:span 2}
+      .hero-aside .eyebrow{margin:0}
+      .hero-aside p{margin:0;font-size:.83rem}
+      .answer{grid-template-columns:1fr;gap:16px;padding:24px;margin-bottom:42px}
+      .section-head{display:block}
+      .section-head p{margin-top:16px}
+      .gallery{gap:10px}
+      .visual-copy{padding:14px}
+      .visual-copy h3{font-size:1rem}
+      .visual-copy p{font-size:.79rem}
+      .picture .tag{left:8px;top:8px;font-size:.6rem}
+      .workflow,.faq-layout{grid-template-columns:1fr;gap:20px}
+      .term-grid{grid-template-columns:1fr;gap:22px}
+      .term-grid ul{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;font-size:.78rem}
+      .section{padding-bottom:43px}
+      .final-cta{display:block;padding:25px}
+      .final-cta .button{margin-top:22px}
+      .footer-inner{display:block}
+      .footer-inner a{display:inline-block;margin-top:15px}
+      th,td{padding:14px;min-width:160px}
+    }
+    @media(prefers-reduced-motion:no-preference){.categories a,.button{transition:background .15s ease}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"WebPage",
+        "@id":"#webpage",
+        "name":"USFans Spreadsheet — Category Finds & Comparison Guide",
+        "description":"An independent category-first guide to organizing fashion finds and comparing sizing, photos and costs.",
+        "inLanguage":"en",
+        "about":{"@type":"Thing","name":"USFans spreadsheet"},
+        "mainEntity":{"@id":"#questions"}
+      },
+      {
+        "@type":"FAQPage",
+        "@id":"#questions",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"What is a USFans spreadsheet?",
+            "acceptedAnswer":{"@type":"Answer","text":"In this guide, a USFans spreadsheet means a product-link shortlist organized by category, with notes for sizing, photos and costs. This page is an independent browsing guide; it does not provide an official USFans spreadsheet or a downloadable product database."}
+          },
+          {
+            "@type":"Question",
+            "name":"Where do the category links go?",
+            "acceptedAnswer":{"@type":"Answer","text":"The category links open the corresponding CAFANS category pages. General browsing buttons open the CAFANS homepage. These links do not open a USFans account or complete a purchase."}
+          },
+          {
+            "@type":"Question",
+            "name":"How should I compare spreadsheet finds?",
+            "acceptedAnswer":{"@type":"Answer","text":"Compare the exact product variant, seller size chart, material description, detailed photos, listed price and any additional purchase or delivery costs. Record missing information before deciding."}
+          },
+          {
+            "@type":"Question",
+            "name":"Are the brand images proof of stock or authenticity?",
+            "acceptedAnswer":{"@type":"Answer","text":"No. The Nike, Louis Vuitton, Gucci and Hermès images are visual category references. They do not verify CAFANS inventory, seller authorization, product authenticity or brand affiliation."}
+          },
+          {
+            "@type":"Question",
+            "name":"Can a listed item price tell me the final delivered cost?",
+            "acceptedAnswer":{"@type":"Answer","text":"No. A listed item price may exclude service fees, domestic delivery, international shipping, payment charges and applicable import costs. Check which charges apply to your specific order and destination."}
+          },
+          {
+            "@type":"Question",
+            "name":"Does this page provide live prices or verified quality-control photos?",
+            "acceptedAnswer":{"@type":"Answer","text":"No. This page provides category links and comparison guidance. Check the destination listing and request relevant photos or measurements before relying on any product information."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyqc.github.io/usfans-rejvw/">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="wordmark" href="https://www.cafans.com" aria-label="Visit CAFANS">FIELDNOTES<span> / finds</span></a>
+      <nav class="top-right" aria-label="Main navigation">
+        <span class="quiet muted">An independent discovery guide</span>
+        <a class="pill" href="https://www.cafans.com">Open CAFANS ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="category-section" aria-label="Shop CAFANS categories">
+      <div class="category-heading">
+        <p class="eyebrow">Start with a category</p>
+        <p class="muted">Ten routes to a more focused shortlist.</p>
+      </div>
+      <div class="categories">
+        <a href="https://cafans.com/category-911-Shoes.html">Shoes <span aria-hidden="true">↗</span></a>
+        <a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">Hoodies/Sweaters <span aria-hidden="true">↗</span></a>
+        <a href="https://cafans.com/category-913-T-Shirts.html">T-Shirts <span aria-hidden="true">↗</span></a>
+        <a href="https://cafans.com/category-914-Jackets.html">Jackets <span aria-hidden="true">↗</span></a>
+        <a href="https://cafans.com/category-915-Pants%2FShorts.html">Pants/Shorts <span aria-hidden="true">↗</span></a>
+        <a href="https://cafans.com/category-916-Headwear.html">Headwear <span aria-hidden="true">↗</span></a>
+        <a href="https://cafans.com/category-917-Sets.html">Sets <span aria-hidden="true">↗</span></a>
+        <a href="https://cafans.com/category-918-underwear%2Funderpants.html">Underwear/underpants <span aria-hidden="true">↗</span></a>
+        <a href="https://cafans.com/category-919-Jersey.html">Jersey <span aria-hidden="true">↗</span></a>
+        <a href="https://cafans.com/category-920-Accessories.html">Accessories <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+
+    <section class="hero" aria-labelledby="main-title">
+      <div>
+        <p class="eyebrow">The category-first edition / shopping fieldnotes</p>
+        <h1 id="main-title">USFans<br>spreadsheet.</h1>
+        <p class="intro">Find a direction before you fill a cart. Explore shoes, everyday layers and finishing details through CAFANS, then compare the information that matters for your shortlist.</p>
+        <a class="button" href="https://www.cafans.com">Explore the category collection <span aria-hidden="true">↗</span></a>
+      </div>
+      <aside class="hero-aside" aria-label="Guide overview">
+        <div class="number">10</div>
+        <p class="eyebrow">Categories. One starting point.</p>
+        <p>A practical USFans spreadsheet guide for organizing product links, checking fit and keeping purchase notes in one place.</p>
+      </aside>
+    </section>
+
+    <section class="answer" aria-labelledby="quick-answer">
+      <h2 id="quick-answer">What is a<br>USFans spreadsheet?</h2>
+      <p>In this guide, a <strong>USFans spreadsheet</strong> means a product-link shortlist organized by category, with notes for sizing, photos and costs. This independent page helps you browse CAFANS and plan that shortlist; it does not provide an official USFans spreadsheet or a downloadable product database.</p>
+    </section>
+
+    <section class="section" aria-labelledby="visual-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01 / Visual directions</p>
+          <h2 id="visual-title">Build from the details.</h2>
+        </div>
+        <p class="muted">Four visual references, from athletic footwear to jewelry. Use each category as a starting point for your own comparison.</p>
+      </div>
+
+      <div class="gallery">
+        <article class="visual-card">
+          <div class="picture shoe">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=560&amp;q=75" alt="Red Nike athletic sneaker on a red background" width="560" height="627" loading="lazy" decoding="async">
+            <span class="tag">Footwear</span>
+          </div>
+          <div class="visual-copy">
+            <h3>Nike / athletic shape</h3>
+            <p>Begin with silhouette and intended use. Compare foot length, sole details and the exact color variant.</p>
+            <a class="text-link" href="https://cafans.com/category-911-Shoes.html">Explore Shoes ↗</a>
+          </div>
+        </article>
+
+        <article class="visual-card">
+          <div class="picture">
+            <img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-embossed-lv-t-shirt--HNY55WDT3900_PM2_Front%20view.png?hei=560&amp;wid=560" alt="Black Louis Vuitton T-shirt with a subtle tonal chest logo" width="560" height="627" loading="lazy" decoding="async">
+            <span class="tag">Clothing</span>
+          </div>
+          <div class="visual-copy">
+            <h3>LV / understated layers</h3>
+            <p>Look beyond a size label. Note chest width, shoulder measurements, garment length and fabric information.</p>
+            <a class="text-link" href="https://cafans.com/category-913-T-Shirts.html">Explore T-Shirts ↗</a>
+          </div>
+        </article>
+
+        <article class="visual-card">
+          <div class="picture">
+            <img src="https://cdn11.bigcommerce.com/s-mqq1i1xa2c/images/stencil/original/image-manager/men-1.jpg?t=1698739456" alt="Gucci accessory arrangement featuring a baseball cap, sunglasses, scarf, wallet and belt" width="560" height="627" loading="lazy" decoding="async">
+            <span class="tag">Headwear</span>
+          </div>
+          <div class="visual-copy">
+            <h3>Gucci / finishing touches</h3>
+            <p>Compare cap shape, adjustment options and head circumference before choosing a finishing detail.</p>
+            <a class="text-link" href="https://cafans.com/category-916-Headwear.html">Explore Headwear ↗</a>
+          </div>
+        </article>
+
+        <article class="visual-card">
+          <div class="picture">
+            <img src="https://assets.hermes.com/is/image/hermesproduct/clic-h-bracelet--700001FP4Z-front-wm-1-0-0-1000-1000_g.jpg" alt="Hermès Clic H bracelet with dark enamel and a silver-tone H clasp" width="560" height="627" loading="lazy" decoding="async">
+            <span class="tag">Jewelry</span>
+          </div>
+          <div class="visual-copy">
+            <h3>Hermès / small accents</h3>
+            <p>Record wrist measurements, stated materials and closure details when comparing bracelets or other jewelry.</p>
+            <a class="text-link" href="https://cafans.com/category-920-Accessories.html">Explore Accessories ↗</a>
+          </div>
+        </article>
+      </div>
+      <p class="caption">Image references: Nike footwear photography via Unsplash; Louis Vuitton and Hermès product imagery; Gucci accessory imagery via Harvey Nichols. Images illustrate style categories and do not confirm CAFANS availability, authenticity, seller authorization or brand affiliation.</p>
+    </section>
+
+    <section class="section workflow" aria-labelledby="workflow-title">
+      <div class="workflow-intro">
+        <p class="eyebrow">02 / The shortlist method</p>
+        <h2 id="workflow-title">Browse less.<br>Compare better.</h2>
+        <p>A useful USFans finds spreadsheet should help you remember why an item made the list. Keep observations specific enough to compare later.</p>
+        <a class="text-link" href="https://www.cafans.com">Find a starting point on CAFANS ↗</a>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Choose one category and a clear purpose.</h3>
+          <p>Start with the item you need: daily shoes, a lightweight jacket, a matching set or a jersey. Note fit preferences and your target budget before collecting links.</p>
+        </li>
+        <li>
+          <h3>Save the exact product and variant.</h3>
+          <p>Record the listing URL, seller, color, size and visible item price. Keep similar-looking products separate when their materials or measurements differ.</p>
+        </li>
+        <li>
+          <h3>Check evidence and missing information.</h3>
+          <p>Read the size chart and material description. Look for relevant detailed photos, and mark unclear information as unknown instead of filling it in from appearance.</p>
+        </li>
+        <li>
+          <h3>Compare the complete purchase.</h3>
+          <p>Review any applicable service, delivery and payment charges alongside the item price. Recheck the listing and purchase terms before placing an order.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="comparison-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03 / Product-link notes</p>
+          <h2 id="comparison-title">What belongs in your sheet?</h2>
+        </div>
+        <p class="muted">Use these fields for a USFans product links spreadsheet that remains readable as your shortlist grows.</p>
+      </div>
+      <div class="table-box">
+        <table>
+          <caption>Suggested fields for comparing fashion finds</caption>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">What to record</th>
+              <th scope="col">Why it helps</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Category &amp; purpose</td>
+              <td>Shoes, layers, headwear or accessories; intended occasion.</td>
+              <td>Keeps comparisons relevant to your actual needs.</td>
+            </tr>
+            <tr>
+              <td>Product &amp; variant</td>
+              <td>Listing URL, seller, color, selected size and model reference if supplied.</td>
+              <td>Reduces confusion between similar listings.</td>
+            </tr>
+            <tr>
+              <td>Fit evidence</td>
+              <td>Seller measurements, measurement units and your own reference garment.</td>
+              <td>Gives more context than a letter size alone.</td>
+            </tr>
+            <tr>
+              <td>Photos &amp; materials</td>
+              <td>Detailed images, stated composition and any unanswered questions.</td>
+              <td>Separates visible evidence from assumptions.</td>
+            </tr>
+            <tr>
+              <td>Cost breakdown</td>
+              <td>Item price, currency and any applicable fees or delivery estimates.</td>
+              <td>Supports a more complete budget comparison.</td>
+            </tr>
+            <tr>
+              <td>Status &amp; date</td>
+              <td>Shortlisted, needs information or passed; date last checked.</td>
+              <td>Shows which details may need another look.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note"><strong>A listed price is a starting point.</strong> It may exclude service fees, domestic delivery, international shipping, payment charges and applicable import costs. Check the charges and terms for your specific order and destination.</p>
+    </section>
+
+    <section class="section faq-layout" aria-labelledby="faq-title">
+      <div>
+        <p class="eyebrow">04 / Direct answers</p>
+        <h2 id="faq-title">Before you<br>follow a find.</h2>
+        <p class="muted">Short answers to practical USFans spreadsheet questions.</p>
+      </div>
+      <div>
+        <details open>
+          <summary>Where do the category links go?</summary>
+          <p>The category links open the corresponding CAFANS category pages. General browsing buttons open the CAFANS homepage. These links do not open a USFans account or complete a purchase.</p>
+        </details>
+        <details>
+          <summary>How should I compare spreadsheet finds?</summary>
+          <p>Compare the exact product variant, seller size chart, material description, detailed photos, listed price and any additional purchase or delivery costs. Record missing information before deciding.</p>
+        </details>
+        <details>
+          <summary>Are the brand images proof of stock or authenticity?</summary>
+          <p>No. The Nike, Louis Vuitton, Gucci and Hermès images are visual category references. They do not verify CAFANS inventory, seller authorization, product authenticity or brand affiliation.</p>
+        </details>
+        <details>
+          <summary>Can a listed item price tell me the final delivered cost?</summary>
+          <p>No. A listed item price may exclude service fees, domestic delivery, international shipping, payment charges and applicable import costs. Check which charges apply to your specific order and destination.</p>
+        </details>
+        <details>
+          <summary>Does this page provide live prices or verified quality-control photos?</summary>
+          <p>No. This page provides category links and comparison guidance. Check the destination listing and request relevant photos or measurements before relying on any product information.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section terms" aria-labelledby="search-title">
+      <p class="eyebrow">05 / Search vocabulary</p>
+      <h2 id="search-title">Refine the next search.</h2>
+      <p class="muted">Use these topic ideas to narrow your research. They are suggested search phrases, not measured search-volume or popularity rankings.</p>
+      <div class="term-grid">
+        <div>
+          <h3>Core topic &amp; supporting phrases</h3>
+          <ul>
+            <li><strong>USFans spreadsheet</strong></li>
+            <li>USFans finds spreadsheet</li>
+            <li>USFans spreadsheet guide</li>
+            <li>USFans product links</li>
+            <li>USFans clothing spreadsheet</li>
+            <li>USFans shoes spreadsheet</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Category research</h3>
+          <ul>
+            <li>USFans sneaker finds</li>
+            <li>USFans running shoes</li>
+            <li>USFans casual shoes</li>
+            <li>USFans hoodie finds</li>
+            <li>USFans sweater finds</li>
+            <li>USFans T-shirt finds</li>
+            <li>USFans jacket finds</li>
+            <li>USFans pants finds</li>
+            <li>USFans shorts finds</li>
+            <li>USFans headwear finds</li>
+            <li>USFans matching sets</li>
+            <li>USFans underwear finds</li>
+            <li>USFans jersey finds</li>
+            <li>USFans accessory finds</li>
+            <li>USFans bracelet finds</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Comparison research</h3>
+          <ul>
+            <li>how to use a USFans spreadsheet</li>
+            <li>USFans product comparison</li>
+            <li>USFans sizing guide</li>
+            <li>USFans shoe size chart</li>
+            <li>USFans clothing measurements</li>
+            <li>USFans product photo checks</li>
+            <li>USFans material descriptions</li>
+            <li>USFans product variants</li>
+            <li>USFans seller information</li>
+            <li>USFans item price comparison</li>
+            <li>USFans shipping cost questions</li>
+            <li>USFans total cost checklist</li>
+            <li>USFans shopping shortlist</li>
+            <li>USFans product link organizer</li>
+            <li>USFans shopping checklist</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="browse-title">
+      <div>
+        <p class="eyebrow">Your next step</p>
+        <h2 id="browse-title">Pick a category. Start a shortlist.</h2>
+        <p>Explore CAFANS, save the product links that fit your needs and compare the details before making a purchase decision.</p>
+      </div>
+      <a class="button" href="https://www.cafans.com">Browse CAFANS <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <p><strong>FIELDNOTES / finds.</strong> Independent USFans spreadsheet discovery guide. Not affiliated with or endorsed by USFans, Nike, Louis Vuitton, Gucci or Hermès. Brand names identify visual references. Product details, availability and purchase terms should be checked on the destination pages.</p>
+      <a href="https://www.cafans.com">Visit CAFANS ↗</a>
+    </div>
+  </footer>
+</body>
+</html>
